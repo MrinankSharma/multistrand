@@ -39,6 +39,7 @@ class NormalSeesawGate(object):
             self.base_domain.C
         self.base_dom_strand = Strand(
             name="base strand", domains=[self.base_domain])
+
         self.threshold_free_waste_complex = Complex(
             strands=[self.base_dom_strand], structure='.' * len(self.base_dom_strand.sequence))
 
@@ -63,6 +64,7 @@ class NormalSeesawGate(object):
         self.output_complex = Complex(strands=[self.output_strand],
                                       structure='.' *
                                       len(self.output_strand.sequence))
+
         self.threshold_complex_output_occluded = Complex(strands=[self.threshold_base,
                                                   self.base_dom_strand, self.output_strand],
                                          structure=".((+)+.).")
@@ -120,6 +122,7 @@ class ClampedSeesawGate(object):
         self.threshold_base = self.input_partial.C + self.clamp_domain.C + \
             self.toehold_domain.C + self.clamp_domain + \
             self.base_domain.C + self.clamp_domain
+
         self.base_dom_strand = self.clamp_domain + self.base_domain + self.clamp_domain
 
         self.gate_output_complex = Complex(strands=[self.base_strand,
@@ -151,7 +154,11 @@ class ClampedSeesawGate(object):
                                            structure="(((((((+..))...+)))))..")
         self.gate_output_complex_output_occluded = Complex(strands=[self.base_strand,
                                                     self.output_strand, self.output_strand],
-                                           structure="(((((((+..)))))+...))..")      
+                                           structure="(((((((+..)))))+...))..")   
+
+        self.threshold_free_waste_complex = Complex(
+            strands=[self.base_dom_strand], structure='.' * len(self.base_dom_strand.sequence))
+               
         ClampedSeesawGate.Gate_Count += 1 
     
 # MS: Please note that placing mismatches in double stranded regions is

@@ -107,7 +107,6 @@ def calculateGateDissocRate(start_complex, output_complex, trials=MINIMUM_FORWAR
     success_stop_condition = StopCondition(
         Options.STR_SUCCESS, [(output_complex, Options.dissocMacrostate, 0)])
     # no failure stop condition here...
-    print trials
     myMultistrand.setOptionsFactory7(getOptions, trials, material, [start_complex], [
         success_stop_condition], [], DEFAULT_TEMPERATURE, "First Passage Time")
 
